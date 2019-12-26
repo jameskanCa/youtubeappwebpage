@@ -1,11 +1,11 @@
 import * as React from 'react';
-import { Table, Tag, Divider } from 'antd';
+import { Table, Tag } from 'antd';
 import YoutubeVideoCategorization from '../Utils/YoutubeVideoCategorization';
 
 export default class HistoryTable extends React.Component {
-    setSessionDetails(session){
-        this.props.sessionSelection(session);
-    }
+	setSessionDetails(session) {
+		this.props.sessionSelection(session);
+	}
 	render() {
 		const columns = [
 			{
@@ -28,23 +28,18 @@ export default class HistoryTable extends React.Component {
 				dataIndex: 'videoMetadata.videoCategory',
 				key: 'videoMetadata.videoCategory',
 				render: (videoMetadata) => (
-                    <span>
-                    {
-                        videoMetadata? <Tag
-                            color={
-                                YoutubeVideoCategorization.isProcastinationVideo(videoMetadata) ? (
-                                    'red'
-                                ) : (
-                                    'green'
-                                )
-                            }
-                            key={videoMetadata}
-                        > 
-                            {YoutubeVideoCategorization.getYoutubeCategoryText(videoMetadata)}
-                        </Tag> : null
-                    }
-                </span>
-				
+					<span>
+						{videoMetadata ? (
+							<Tag
+								color={
+									YoutubeVideoCategorization.isProcastinationVideo(videoMetadata) ? 'red' : 'green'
+								}
+								key={videoMetadata}
+							>
+								{YoutubeVideoCategorization.getYoutubeCategoryText(videoMetadata)}
+							</Tag>
+						) : null}
+					</span>
 				)
 			},
 			{
@@ -52,7 +47,7 @@ export default class HistoryTable extends React.Component {
 				key: 'action',
 				render: (videoMetadata) => (
 					<span>
-						<a onClick={()=>this.setSessionDetails(videoMetadata)}>Details</a>
+						<a onClick={() => this.setSessionDetails(videoMetadata)}>Details</a>
 					</span>
 				)
 			}

@@ -2,8 +2,10 @@ import React, { Component } from 'react';
 import './App.css';
 import Panel from './Components/Panel';
 import Sidebar from './Components/Sidebar';
-import { Layout } from 'antd';
-const { Content } = Layout;
+
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import SummaryPanel from './Components/SummaryPanel';
+import HistoryPanel from './Components/HistoryPanel';
 
 class App extends Component {
 	state = {
@@ -24,20 +26,26 @@ class App extends Component {
 	isUserDataEmpty() {
 		return this.state.userData == null;
 	}
-
 	render() {
 		return (
 			<div className="App">
-				<Layout>
+				<Router>
 					<Sidebar />
-					<Layout style={{ marginLeft: 110 }}>
-						<Content style={{ overflow: 'initial' }}>
-							<Layout>
-								<Panel sessions={this.isUserDataEmpty() ? [] : this.state.userData.session.reverse()} />
-							</Layout>
-						</Content>
-					</Layout>
-				</Layout>
+					<Panel>
+						<Switch>
+							<Route path="/Summary">
+								<SummaryPanel
+									sessions={this.isUserDataEmpty() ? [] : this.state.userData.session.reverse()}
+								/>
+							</Route>
+							<Route path="/History">
+								<HistoryPanel
+									sessions={this.isUserDataEmpty() ? [] : this.state.userData.session.reverse()}
+								/>
+							</Route>
+						</Switch>
+					</Panel>
+				</Router>
 			</div>
 		);
 	}
