@@ -6,6 +6,7 @@ import Sidebar from './Components/Sidebar';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import SummaryPanel from './Components/SummaryComponents/SummaryPanel';
 import HistoryPanel from './Components/HistoryComponent/HistoryPanel';
+import GetUserSessions from './Requests/GetUserSessions';
 
 class App extends Component {
 	state = {
@@ -13,14 +14,9 @@ class App extends Component {
 	};
 
 	componentDidMount() {
-		// Development Mode
-		fetch('http://localhost:3001/getUserSessions/113340512880134517454')
-			.then(function(response) {
-				return response.json();
-			})
-			.then((responseJson) => {
-				this.setState({ userData: responseJson });
-			});
+		GetUserSessions.GetUserSessionsData().then((responseJson) => {
+			this.setState({ userData: responseJson });
+		});
 	}
 
 	isUserDataEmpty() {
