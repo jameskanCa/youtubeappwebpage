@@ -1,17 +1,12 @@
-import { ResponsiveBar  } from '@nivo/pie';
+import { ResponsiveBar  } from '@nivo/bar';
 import * as React from 'react';
-// make sure parent container have a defined height when using
-// responsive component, otherwise height will be 0 and
-// no chart will be rendered.
-// website examples showcase many properties,
-// you'll often use just a few of them.
 
 export default class PieGraph extends React.Component {
 	render() {
 		return <ResponsiveBar
-        data={data}
-        keys={[ 'hot dog', 'burger', 'sandwich', 'kebab', 'fries', 'donut' ]}
-        indexBy="country"
+        data={this.props.data}
+        keys={this.props.keys}
+        indexBy="Date"
         margin={{ top: 50, right: 130, bottom: 50, left: 60 }}
         padding={0.3}
         colors={{ scheme: 'nivo' }}
@@ -35,20 +30,6 @@ export default class PieGraph extends React.Component {
                 spacing: 10
             }
         ]}
-        fill={[
-            {
-                match: {
-                    id: 'fries'
-                },
-                id: 'dots'
-            },
-            {
-                match: {
-                    id: 'sandwich'
-                },
-                id: 'lines'
-            }
-        ]}
         borderColor={{ from: 'color', modifiers: [ [ 'darker', 1.6 ] ] }}
         axisTop={null}
         axisRight={null}
@@ -56,7 +37,7 @@ export default class PieGraph extends React.Component {
             tickSize: 5,
             tickPadding: 5,
             tickRotation: 0,
-            legend: 'country',
+            legend: 'Date',
             legendPosition: 'middle',
             legendOffset: 32
         }}
@@ -64,7 +45,7 @@ export default class PieGraph extends React.Component {
             tickSize: 5,
             tickPadding: 5,
             tickRotation: 0,
-            legend: 'food',
+            legend: 'Category',
             legendPosition: 'middle',
             legendOffset: -40
         }}

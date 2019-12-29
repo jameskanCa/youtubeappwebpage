@@ -1,5 +1,5 @@
 import * as React from 'react';
-import TimeHelper from '../Utils/TimeHelper';
+import TimeHelper from '../../Utils/TimeHelper';
 import { Descriptions } from 'antd';
 
 export default class Description extends React.Component {

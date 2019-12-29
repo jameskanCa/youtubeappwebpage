@@ -1,11 +1,12 @@
 import * as React from 'react';
 import { Table, Tag } from 'antd';
-import YoutubeVideoCategorization from '../Utils/YoutubeVideoCategorization';
+import YoutubeVideoCategorization from '../../Utils/YoutubeVideoCategorization';
 
 export default class HistoryTable extends React.Component {
 	setSessionDetails(session) {
 		this.props.sessionSelection(session);
 	}
+	
 	render() {
 		const columns = [
 			{

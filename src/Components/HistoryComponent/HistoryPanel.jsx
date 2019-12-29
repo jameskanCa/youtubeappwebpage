@@ -1,10 +1,8 @@
 import * as React from 'react';
 import HistoryTable from './HistoryTable';
-import MetricCalculation from '../MetricCalculation';
 import Description from './Description';
-import VideoComponent from './VideoComponent';
-
-export default class Panel extends React.Component {
+import VideoComponent from '../CustomComponents/VideoComponent';
+export default class HistoryPanel extends React.Component {
 	state = {
 		selectedSession: null
 	};
@@ -14,10 +12,9 @@ export default class Panel extends React.Component {
 	};
 
 	render() {
-		MetricCalculation.CategoryCounters(this.props.sessions);
 		return (
-			<React.Fragment>
-				<div>
+			<div style={{ marginLeft: 100 }}>
+				<div >
 					{this.state.selectedSession ? (
 						<VideoComponent videoId={this.state.selectedSession.videoId} />
 					) : null}
@@ -28,7 +25,7 @@ export default class Panel extends React.Component {
 				<div >
 					<HistoryTable sessions={this.props.sessions} sessionSelection={this.selectedSession} />
 				</div>
-			</React.Fragment>
+			</div>
 		);
 	}
 }

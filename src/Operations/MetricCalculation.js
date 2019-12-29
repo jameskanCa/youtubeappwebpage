@@ -1,6 +1,6 @@
-import TimeHelper from './Utils/TimeHelper';
+import TimeHelper from '../Utils/TimeHelper';
 import { chain, groupBy, map } from 'lodash';
-import YoutubeVideoCategorization from './Utils/YoutubeVideoCategorization';
+import YoutubeVideoCategorization from '../Utils/YoutubeVideoCategorization';
 class MetricCalculation {
 	static PercentageVideoCompleted(sessions) {
 		let finishCount = 0;
@@ -31,27 +31,40 @@ class MetricCalculation {
 
 	static CategoryCounters(sessions) {
 		let arr = Array(45).fill(0);
-		return sessions.map((session) => {
+		sessions.map((session) => {
 			arr[parseInt(session.videoMetadata.videoCategory, 10)]++;
 		});
+		return arr;
 	}
 
+	/** 
+	 * Input: Client should define length/number of aggregated days
+	 * in question. 
+	 * Output: Returns an array of arrays where each sub-array
+	 * holds the values 0 - 44 representing video categories
+	*/
 	static formatSessionDate(sessions) {
-		let categoryByDate = sessions.map((session) => {
+		let categoryByDate, groupedResult, aggregatedCategories;
+
+		categoryByDate = sessions.map((session) => {
 			let stringDate = TimeHelper.formatInputTime(session.startTime);
 			return { date: stringDate, videoCategory: session.videoMetadata.videoCategory };
 		});
-		let groupedResult = chain(categoryByDate)
+		groupedResult = chain(categoryByDate)
 			.groupBy('date')
 			.map((value, key) => ({ date: key, videos: value }))
 			.value();
-		groupedResult.map((resultGroup) => {
-			this.calculateCategoryValues(resultGroup);
+		return groupedResult.map((resultGroup) => {
+			return { date: resultGroup.date, categoryData: this.AggregateCategoryCounter(resultGroup) };
 		});
 	}
 
-	static calculateCategoryValues(resultGroup) {
-		//resultGroup.videos.map
+	static AggregateCategoryCounter(resultGroup) {
+		let arr = Array(45).fill(0);
+		resultGroup.videos.map((video) => {
+			arr[parseInt(video.videoCategory, 10)]++;
+		});
+		return arr;
 	}
 }
 export default MetricCalculation;

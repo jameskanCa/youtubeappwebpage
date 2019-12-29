@@ -1,12 +1,12 @@
 import * as React from 'react';
 import PieGraph from '../Graphs/PieGraph';
-import MetricCalculation from '../MetricCalculation';
-import PieGraphProcastination from '../Graphs/PieGraphProcastination';
+import MetricCalculation from '../../Operations/MetricCalculation';
+import Panel from '../CustomComponents/Panel';
+import TitleComponent from '../CustomComponents/TitleComponent';
 
-export default class Panel extends React.Component {
+export default class VideoProgressSection extends React.Component {
 	prepareGraphData() {
 		let percentageCompleted = MetricCalculation.PercentageVideoCompleted(this.props.sessions);
-		MetricCalculation.formatSessionDate(this.props.sessions);
 		return [
 			{
 				id: 'Completed Videos',
@@ -45,18 +45,19 @@ export default class Panel extends React.Component {
 	}
 
 	render() {
-		MetricCalculation.CategoryCounters(this.props.sessions);
 		return (
-			<React.Fragment>
-				<div style={{ display: 'flex' }}>
-					<div style={{ width: 1300, height: 500, margin: 50 }}>
+			<Panel>
+				<div style={{ display: 'flex', minHeight: 550 }}>
+					<div style={{ minWidth: 700, height: 500 }}>
+						<TitleComponent title={"Video Completion Distribution"}></TitleComponent>
 						<PieGraph data={this.prepareGraphData()} />
 					</div>
-					<div style={{ width: 1300, height: 500, margin: 50 }}>
-						<PieGraphProcastination data={this.prepareProcastinationData()} />
+					<div style={{ minWidth: 700, height: 500 }}>
+					<TitleComponent title={"Procastination Video Distribution"}></TitleComponent>
+						<PieGraph data={this.prepareProcastinationData()} />
 					</div>
 				</div>
-			</React.Fragment>
+			</Panel>
 		);
 	}
 }

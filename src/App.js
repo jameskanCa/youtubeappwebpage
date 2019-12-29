@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import './App.css';
-import Panel from './Components/Panel';
+import Panel from './Components/CustomComponents/Panel';
 import Sidebar from './Components/Sidebar';
 
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import SummaryPanel from './Components/SummaryPanel';
-import HistoryPanel from './Components/HistoryPanel';
+import SummaryPanel from './Components/SummaryComponents/SummaryPanel';
+import HistoryPanel from './Components/HistoryComponent/HistoryPanel';
 
 class App extends Component {
 	state = {
@@ -39,9 +39,7 @@ class App extends Component {
 								/>
 							</Route>
 							<Route path="/History">
-								<HistoryPanel
-									sessions={this.isUserDataEmpty() ? [] : this.state.userData.session.reverse()}
-								/>
+								<HistoryPanel sessions={this.isUserDataEmpty() ? [] : this.state.userData.session} />
 							</Route>
 						</Switch>
 					</Panel>

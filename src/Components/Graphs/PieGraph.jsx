@@ -51,20 +51,6 @@ export default class PieGraph extends React.Component {
 					spacing: 10
 				}
 			]}
-			fill={[
-				{
-					match: {
-						id: 'CompletedVideos'
-					},
-					id: 'dots'
-				},
-				{
-					match: {
-						id: 'IncompleteVideos'
-					},
-					id: 'dots'
-				}
-			]}
 			legends={[
 				{
 					anchor: 'bottom',
