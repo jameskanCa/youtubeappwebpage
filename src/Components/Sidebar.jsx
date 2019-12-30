@@ -16,10 +16,8 @@ export default class Sidebar extends React.Component {
 		return (
 			<Sider
 				style={{
-					overflow: 'auto',
-					height: '100vh',
-					position: 'fixed',
-					left: 0
+					position: 'relative',
+					minHeight: '100%'
 				}}
 				collapsible
 				collapsed={this.state.collapsed}

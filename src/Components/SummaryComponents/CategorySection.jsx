@@ -87,8 +87,8 @@ export default class CategorySection extends React.Component {
 		return (
 			<Panel>
 				{this.prepareCategoryGraph() ? (
-					<div style={{ minWidth: 1300, height: 500, margin: 50 }}>
-					<TitleComponent title={"Video Categories Watched Per Day"}></TitleComponent>
+					<div style={{ minWidth: 800, height: 500, marginRight: 50, paddingBottom: 50 }}>
+						<TitleComponent title={'Video Categories Watched Per Day'} />
 						<BarGraph
 							data={this.prepareCategoryGraph()}
 							keys={[

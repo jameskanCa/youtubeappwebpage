@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import './App.css';
-import Panel from './Components/CustomComponents/Panel';
 import Sidebar from './Components/Sidebar';
 
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import SummaryPanel from './Components/SummaryComponents/SummaryPanel';
 import HistoryPanel from './Components/HistoryComponent/HistoryPanel';
 import GetUserSessions from './Requests/GetUserSessions';
+import { Layout } from 'antd';
 
 class App extends Component {
 	state = {
@@ -25,9 +25,10 @@ class App extends Component {
 	render() {
 		return (
 			<div className="App">
+				<Layout>
 				<Router>
 					<Sidebar />
-					<Panel>
+					<Layout>
 						<Switch>
 							<Route path="/Summary">
 								<SummaryPanel
@@ -38,8 +39,9 @@ class App extends Component {
 								<HistoryPanel sessions={this.isUserDataEmpty() ? [] : this.state.userData.session} />
 							</Route>
 						</Switch>
-					</Panel>
+					</Layout>
 				</Router>
+				</Layout>
 			</div>
 		);
 	}

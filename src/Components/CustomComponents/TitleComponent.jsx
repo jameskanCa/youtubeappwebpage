@@ -1,11 +1,10 @@
 import * as React from 'react';
+import { Typography } from 'antd';
+
+const { Title } = Typography;
 
 export default class TitleComponent extends React.Component {
 	render() {
-		return (
-			<div style={{fontSize: 20, fontStyle: 'bold'}}>
-                {this.props.title}
-            </div>
-		);
+		return <Title level={3}>{this.props.title}</Title>;
 	}
 }
