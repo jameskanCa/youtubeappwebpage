@@ -3,6 +3,7 @@ import MetricCalculation from '../../Operations/MetricCalculation';
 import BarGraph from '../Graphs/BarGraph';
 import Panel from '../CustomComponents/Panel';
 import TitleComponent from '../CustomComponents/TitleComponent';
+import GraphCard from '../Graphs/GraphCard';
 
 export default class CategorySection extends React.Component {
 	prepareCategoryGraph() {
@@ -84,51 +85,46 @@ export default class CategorySection extends React.Component {
 	}
 
 	render() {
-		return (
-			<Panel>
-				{this.prepareCategoryGraph() ? (
-					<div style={{ minWidth: 800, height: 500, marginRight: 50, paddingBottom: 50 }}>
-						<TitleComponent title={'Video Categories Watched Per Day'} />
-						<BarGraph
-							data={this.prepareCategoryGraph()}
-							keys={[
-								'Autos & Vehicles',
-								'Film & Animation',
-								'Music',
-								'Pets & Animals',
-								'Sports',
-								'Short Movies',
-								'Travel & Events',
-								'Gaming',
-								'Videoblogging',
-								'People & Blogs',
-								'Comedy',
-								'Entertainment',
-								'News & Politics',
-								'Howto & Style',
-								'Education',
-								'Science & Technology',
-								'Nonprofits & Activism',
-								'Movies',
-								'Anime/Animation',
-								'Action/Adventure',
-								'Classics',
-								'Comedy',
-								'Documentary',
-								'Drama',
-								'Family',
-								'Foreign',
-								'Horror',
-								'Sci-Fi/Fantasy',
-								'Thriller',
-								'Shorts',
-								'Shows',
-								'Trailers'
-							]}
-						/>
-					</div>
-				) : null}
-			</Panel>
-		);
+		return this.prepareCategoryGraph() ? (
+			<GraphCard title={'Video Categories Watched'}>
+				<BarGraph
+					data={this.prepareCategoryGraph()}
+					keys={[
+						'Autos & Vehicles',
+						'Film & Animation',
+						'Music',
+						'Pets & Animals',
+						'Sports',
+						'Short Movies',
+						'Travel & Events',
+						'Gaming',
+						'Videoblogging',
+						'People & Blogs',
+						'Comedy',
+						'Entertainment',
+						'News & Politics',
+						'Howto & Style',
+						'Education',
+						'Science & Technology',
+						'Nonprofits & Activism',
+						'Movies',
+						'Anime/Animation',
+						'Action/Adventure',
+						'Classics',
+						'Comedy',
+						'Documentary',
+						'Drama',
+						'Family',
+						'Foreign',
+						'Horror',
+						'Sci-Fi/Fantasy',
+						'Thriller',
+						'Shorts',
+						'Shows',
+						'Trailers'
+					]}
+				/>
+			</GraphCard>
+		) : null;
 	}
 }

@@ -22,25 +22,28 @@ class App extends Component {
 	isUserDataEmpty() {
 		return this.state.userData == null;
 	}
+
 	render() {
 		return (
 			<div className="App">
 				<Layout>
-				<Router>
-					<Sidebar />
-					<Layout>
-						<Switch>
-							<Route path="/Summary">
-								<SummaryPanel
-									sessions={this.isUserDataEmpty() ? [] : this.state.userData.session.reverse()}
-								/>
-							</Route>
-							<Route path="/History">
-								<HistoryPanel sessions={this.isUserDataEmpty() ? [] : this.state.userData.session} />
-							</Route>
-						</Switch>
-					</Layout>
-				</Router>
+					<Router>
+						<Sidebar />
+						<Layout>
+							<Switch>
+								<Route path="/Summary">
+									<SummaryPanel
+										sessions={this.isUserDataEmpty() ? [] : this.state.userData.session.reverse()}
+									/>
+								</Route>
+								<Route path="/History">
+									<HistoryPanel
+										sessions={this.isUserDataEmpty() ? [] : this.state.userData.session}
+									/>
+								</Route>
+							</Switch>
+						</Layout>
+					</Router>
 				</Layout>
 			</div>
 		);
