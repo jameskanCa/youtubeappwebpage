@@ -1,1 +1,7 @@
 ![](Images/p1.PNG)
+![](Images/p2.PNG)
+![](Images/p3.PNG)
+![](Images/p4.PNG)
+![](Images/p5.PNG)
+![](Images/p6.PNG)
+![](Images/p7.PNG)
