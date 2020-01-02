@@ -15,7 +15,7 @@ Client extension and client web-app communicate with the server API endpoints to
 
 Web-App communicates through REST calls to the server API to retrieve user data, including watch history and video metadata. This data gets used to calculate metrics such as % of videos watched that are distracting and non-educational. A breakdown of the user's video categories per day can be displayed. 
 
-# Sample Images
+# Project Images
 ### Client Extension Modal that warns users a video is of distracting nature.
 ![](Images/p1.PNG)
 
